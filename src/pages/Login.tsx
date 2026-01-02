@@ -66,12 +66,12 @@ const Login = () => {
       >
         {/* Logo */}
         <Link to="/" className="mb-8 flex items-center justify-center gap-2">
-          <motion.div
-            className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-primary"
+          <motion.img
+            src="/logo.png"
+            alt="Healix Logo"
+            className="h-10 w-10 object-contain"
             whileHover={{ scale: 1.05 }}
-          >
-            <span className="text-xl font-bold text-primary-foreground">H</span>
-          </motion.div>
+          />
           <span className="font-display text-2xl font-bold text-foreground">
             Healix
           </span>

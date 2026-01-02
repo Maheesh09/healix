@@ -22,13 +22,13 @@ export const Navbar = () => {
       <nav className="container flex h-16 items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <motion.div
-            className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-primary"
+          <motion.img
+            src="/logo.png"
+            alt="Healix Logo"
+            className="h-9 w-9 object-contain"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-          >
-            <span className="text-lg font-bold text-primary-foreground">H</span>
-          </motion.div>
+          />
           <span className="font-display text-xl font-bold text-foreground">
             Healix
           </span>
