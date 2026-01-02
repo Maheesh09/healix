@@ -12,6 +12,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { HeroSlider } from "@/components/HeroSlider";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -195,50 +196,8 @@ const Landing = () => {
             </motion.div>
           </motion.div>
 
-          {/* Animated flow visual */}
-          <motion.div
-            className="mt-16 flex items-center justify-center gap-4 md:gap-8"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-          >
-            <motion.div
-              className="flex h-16 w-16 items-center justify-center rounded-2xl bg-card shadow-card md:h-20 md:w-20"
-              whileHover={{ scale: 1.05, rotate: 5 }}
-            >
-              <FileText className="h-8 w-8 text-primary md:h-10 md:w-10" />
-            </motion.div>
-            <motion.div
-              className="flex h-8 items-center"
-              animate={{ x: [0, 8, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            >
-              <ChevronRight className="h-6 w-6 text-muted-foreground" />
-              <ChevronRight className="-ml-3 h-6 w-6 text-muted-foreground/60" />
-            </motion.div>
-            <motion.div
-              className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-secondary shadow-lg md:h-20 md:w-20"
-              whileHover={{ scale: 1.05, rotate: -5 }}
-              animate={{ rotate: [0, 5, 0, -5, 0] }}
-              transition={{ duration: 4, repeat: Infinity }}
-            >
-              <Brain className="h-8 w-8 text-secondary-foreground md:h-10 md:w-10" />
-            </motion.div>
-            <motion.div
-              className="flex h-8 items-center"
-              animate={{ x: [0, 8, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, delay: 0.3 }}
-            >
-              <ChevronRight className="h-6 w-6 text-muted-foreground" />
-              <ChevronRight className="-ml-3 h-6 w-6 text-muted-foreground/60" />
-            </motion.div>
-            <motion.div
-              className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-accent shadow-lg md:h-20 md:w-20"
-              whileHover={{ scale: 1.05, rotate: 5 }}
-            >
-              <TrendingUp className="h-8 w-8 text-accent-foreground md:h-10 md:w-10" />
-            </motion.div>
-          </motion.div>
+          {/* Hero Image Slider */}
+          <HeroSlider autoPlayInterval={5000} />
         </div>
       </section>
 
