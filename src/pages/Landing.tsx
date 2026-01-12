@@ -111,9 +111,9 @@ const Landing = () => {
             <Link to="/login">
               <Button variant="ghost">Sign In</Button>
             </Link>
-            <Link to="/dashboard">
+            <Link to="/signup">
               <Button variant="hero" size="sm">
-                View Demo
+                Sign Up
               </Button>
             </Link>
           </div>
@@ -164,9 +164,8 @@ const Landing = () => {
               variants={fadeInUp}
               className="mt-6 text-lg text-muted-foreground md:text-xl"
             >
-              Understand, track, and organize your complete medical history in one
-              secure place. From lab reports to vital trends—everything you need
-              to take control of your health.
+              Understand, track and organize your complete medical history in one
+              secure place.
             </motion.p>
 
             <motion.div
@@ -175,14 +174,14 @@ const Landing = () => {
             >
               <Link to="/dashboard">
                 <Button variant="hero" size="xl" className="w-full sm:w-auto">
-                  View Demo Dashboard
+                  View Dashboard
                   <ArrowRight className="h-5 w-5" />
                 </Button>
               </Link>
               <Link to="/upload">
                 <Button variant="hero-outline" size="xl" className="w-full sm:w-auto">
                   <Upload className="h-5 w-5" />
-                  Upload Report (Demo)
+                  Upload Report
                 </Button>
               </Link>
             </motion.div>
