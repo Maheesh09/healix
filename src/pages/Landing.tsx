@@ -1,29 +1,33 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
-  Upload,
-  Brain,
-  TrendingUp,
-  Shield,
+  ArrowRight,
   FileText,
   Activity,
-  ArrowRight,
-  Sparkles,
-  ChevronRight,
+  TrendingUp,
+  Shield,
+  Heart,
+  Phone,
+  Mail,
+  MapPin,
+  Facebook,
+  Twitter,
+  Linkedin,
+  Instagram,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { HeroSlider } from "@/components/HeroSlider";
+import heroIllustration from "@/assets/hero-illustration.png";
 
 const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
+  initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 },
+  transition: { duration: 0.6 },
 };
 
 const staggerContainer = {
   animate: {
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.15,
     },
   },
 };
@@ -31,249 +35,208 @@ const staggerContainer = {
 const features = [
   {
     icon: FileText,
-    title: "Lifelong Health Record",
-    description:
-      "All your medical reports, lab results, and health data in one secure place—organized for life.",
+    title: "Complete Health Records",
+    description: "All your medical reports organized in one secure place for lifetime access.",
   },
   {
     icon: Activity,
-    title: "Anatomy-Based Organization",
-    description:
-      "View your health by body system. Heart, brain, lungs—understand each part of you.",
+    title: "Body System Insights",
+    description: "View health data organized by body systems for better understanding.",
   },
   {
     icon: TrendingUp,
-    title: "Visual Health Trends",
-    description:
-      "Interactive charts show how your biomarkers change over time. Spot patterns early.",
-  },
-  {
-    icon: Sparkles,
-    title: "Smart Insights",
-    description:
-      "AI-powered summaries explain your results in simple, non-clinical language.",
+    title: "Health Trend Analysis",
+    description: "Track your biomarkers over time with interactive visual charts.",
   },
 ];
 
-const steps = [
-  {
-    number: "01",
-    title: "Upload your reports",
-    description:
-      "Drag & drop PDFs, images, or forward from WhatsApp. We handle the rest.",
-  },
-  {
-    number: "02",
-    title: "AI organizes by body system",
-    description:
-      "Our AI reads, extracts, and categorizes every value into the right body system.",
-  },
-  {
-    number: "03",
-    title: "Track health trends over time",
-    description:
-      "Watch your glucose, cholesterol, and more evolve. Stay informed, stay healthy.",
-  },
+const navLinks = [
+  { name: "Home", href: "/" },
+  { name: "Features", href: "#features" },
+  { name: "About", href: "#about" },
+  { name: "Contact", href: "#contact" },
 ];
 
 const Landing = () => {
   return (
     <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
-        <nav className="container flex h-16 items-center justify-between">
-          <Link to="/" className="flex items-center gap-2">
+      {/* Modern Navigation */}
+      <header className="absolute top-0 left-0 right-0 z-50">
+        <nav className="container flex h-20 items-center justify-between">
+          <Link to="/" className="flex items-center gap-3">
             <motion.img
               src="/logo.png"
               alt="Healix Logo"
-              className="h-9 w-9 object-contain"
+              className="h-10 w-10 object-contain"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             />
-            <span className="font-display text-xl font-bold text-foreground">
+            <span className="font-display text-2xl font-bold text-white">
               Healix
             </span>
           </Link>
 
-          <div className="hidden items-center gap-6 md:flex">
-            <Link
-              to="#features"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Features
+          <div className="hidden items-center gap-8 md:flex">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.href}
+                className="text-sm font-medium text-white/80 transition-colors hover:text-white"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-3">
+            <Link to="/login" className="hidden md:block">
+              <Button variant="ghost" className="text-white hover:bg-white/10 hover:text-white">
+                Sign In
+              </Button>
             </Link>
-            <Link
-              to="#how-it-works"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              How it works
-            </Link>
-            <Link to="/login">
-              <Button variant="ghost">Sign In</Button>
-            </Link>
-            <Link to="/signup">
-              <Button variant="hero" size="sm">
-                Sign Up
+            <Link to="/dashboard">
+              <Button className="rounded-full bg-white px-6 text-primary hover:bg-white/90">
+                Get Started
               </Button>
             </Link>
           </div>
-
-          <Link to="/dashboard" className="md:hidden">
-            <Button variant="hero" size="sm">
-              Demo
-            </Button>
-          </Link>
         </nav>
       </header>
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-hero py-20 md:py-32">
-        {/* Background decoration */}
+      {/* Hero Section with Gradient Background */}
+      <section className="relative min-h-[90vh] overflow-hidden">
+        {/* Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-secondary" />
+        
+        {/* Decorative Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
-            className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-primary/5 blur-3xl"
-            animate={{ scale: [1, 1.1, 1], rotate: [0, 90, 0] }}
-            transition={{ duration: 20, repeat: Infinity }}
+            className="absolute -right-32 top-20 h-[600px] w-[600px] rounded-full bg-white/5"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1 }}
           />
           <motion.div
-            className="absolute -bottom-20 -left-20 h-96 w-96 rounded-full bg-secondary/5 blur-3xl"
-            animate={{ scale: [1.1, 1, 1.1], rotate: [0, -90, 0] }}
-            transition={{ duration: 15, repeat: Infinity }}
+            className="absolute -left-20 bottom-20 h-[400px] w-[400px] rounded-full bg-white/5"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+          />
+          <motion.div
+            className="absolute right-1/4 top-1/3 h-3 w-3 rounded-full bg-white/40"
+            animate={{ y: [0, -15, 0] }}
+            transition={{ duration: 3, repeat: Infinity }}
+          />
+          <motion.div
+            className="absolute left-1/3 top-1/4 h-2 w-2 rounded-full bg-white/30"
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2.5, repeat: Infinity }}
           />
         </div>
 
-        <div className="container relative">
-          <motion.div
-            className="mx-auto max-w-3xl text-center"
-            variants={staggerContainer}
-            initial="initial"
-            animate="animate"
-          >
-            
-
-            <motion.h1
-              variants={fadeInUp}
-              className="font-display text-4xl font-bold tracking-tight text-foreground md:text-6xl lg:text-7xl"
-            >
-              Your Lifelong{" "}
-              <span className="text-gradient-primary">Digital Health</span>{" "}
-              Profile
-            </motion.h1>
-
-            <motion.p
-              variants={fadeInUp}
-              className="mt-6 text-lg text-muted-foreground md:text-xl"
-            >
-              Understand, track and organize your complete medical history in one
-              secure place.
-            </motion.p>
-
+        <div className="container relative z-10 flex min-h-[90vh] items-center">
+          <div className="grid w-full items-center gap-12 lg:grid-cols-2">
+            {/* Left Content */}
             <motion.div
-              variants={fadeInUp}
-              className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
+              variants={staggerContainer}
+              initial="initial"
+              animate="animate"
+              className="max-w-xl pt-20"
             >
-              <Link to="/dashboard">
-                <Button variant="hero" size="xl" className="w-full sm:w-auto">
-                  View Dashboard
-                  <ArrowRight className="h-5 w-5" />
-                </Button>
-              </Link>
-              <Link to="/upload">
-                <Button variant="hero-outline" size="xl" className="w-full sm:w-auto">
-                  <Upload className="h-5 w-5" />
-                  Upload Report
-                </Button>
-              </Link>
-            </motion.div>
-          </motion.div>
-
-          {/* Hero Image Slider */}
-          <HeroSlider autoPlayInterval={5000} />
-        </div>
-      </section>
-
-      {/* How it works */}
-      <section id="how-it-works" className="py-20 md:py-28">
-        <div className="container">
-          <motion.div
-            className="mx-auto max-w-2xl text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-              How Healix Works
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Three simple steps to a complete picture of your health
-            </p>
-          </motion.div>
-
-          <div className="mt-16 grid gap-8 md:grid-cols-3">
-            {steps.map((step, index) => (
               <motion.div
-                key={step.number}
-                className="relative"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.15 }}
+                variants={fadeInUp}
+                className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm"
               >
-                <div className="card-elevated p-8">
-                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-primary text-lg font-bold text-primary-foreground">
-                    {step.number}
-                  </div>
-                  <h3 className="font-display text-xl font-semibold text-foreground">
-                    {step.title}
-                  </h3>
-                  <p className="mt-2 text-muted-foreground">{step.description}</p>
-                </div>
-                {index < steps.length - 1 && (
-                  <div className="absolute -right-4 top-1/2 hidden -translate-y-1/2 text-muted-foreground/30 md:block">
-                    <ChevronRight className="h-8 w-8" />
-                  </div>
-                )}
+                <Heart className="h-4 w-4" />
+                Your Health, Simplified
               </motion.div>
-            ))}
+
+              <motion.h1
+                variants={fadeInUp}
+                className="font-display text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl"
+              >
+                Smart and
+                <br />
+                Secure Health
+                <br />
+                <span className="text-white/80">PROFILE</span>
+              </motion.h1>
+
+              <motion.p
+                variants={fadeInUp}
+                className="mt-6 text-lg leading-relaxed text-white/80"
+              >
+                Understand, track and organize your complete medical history in one 
+                secure digital profile. Access your health data anytime, anywhere.
+              </motion.p>
+
+              <motion.div variants={fadeInUp} className="mt-8 flex flex-wrap gap-4">
+                <Link to="/dashboard">
+                  <Button
+                    size="lg"
+                    className="rounded-full bg-white px-8 text-primary shadow-lg hover:bg-white/90"
+                  >
+                    Get Started
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
+              </motion.div>
+            </motion.div>
+
+            {/* Right Illustration */}
+            <motion.div
+              className="relative hidden lg:block"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <img
+                src={heroIllustration}
+                alt="Healthcare Illustration"
+                className="w-full max-w-lg ml-auto"
+              />
+            </motion.div>
           </div>
         </div>
+
+        {/* Wave Bottom */}
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg
+            viewBox="0 0 1440 120"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
+              fill="hsl(var(--background))"
+            />
+          </svg>
+        </div>
       </section>
 
-      {/* Features */}
-      <section id="features" className="bg-muted/30 py-20 md:py-28">
+      {/* Features Section */}
+      <section id="features" className="py-20">
         <div className="container">
-          <motion.div
-            className="mx-auto max-w-2xl text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-              Everything You Need
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Powerful features designed to give you clarity about your health
-            </p>
-          </motion.div>
-
-          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-8 md:grid-cols-3">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
-                className="card-elevated group p-6"
-                initial={{ opacity: 0, y: 20 }}
+                className="group rounded-2xl bg-card p-8 shadow-lg transition-all hover:shadow-xl"
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -4 }}
+                whileHover={{ y: -5 }}
               >
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-gradient-primary group-hover:text-primary-foreground">
-                  <feature.icon className="h-6 w-6" />
+                <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                  <feature.icon className="h-7 w-7" />
                 </div>
-                <h3 className="font-display text-lg font-semibold text-foreground">
+                <h3 className="mb-3 font-display text-xl font-semibold text-foreground">
                   {feature.title}
                 </h3>
-                <p className="mt-2 text-sm text-muted-foreground">
+                <p className="text-muted-foreground leading-relaxed">
                   {feature.description}
                 </p>
               </motion.div>
@@ -282,32 +245,61 @@ const Landing = () => {
         </div>
       </section>
 
+      {/* About Section */}
+      <section id="about" className="bg-muted/30 py-20">
+        <div className="container">
+          <div className="mx-auto max-w-3xl text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="font-display text-3xl font-bold text-foreground md:text-4xl">
+                Your Health Journey, <span className="text-primary">Simplified</span>
+              </h2>
+              <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+                Healix is your lifelong digital health companion. We help you organize, 
+                understand, and track your medical records with AI-powered insights. 
+                Take control of your health data today.
+              </p>
+              <div className="mt-8 flex justify-center gap-4">
+                <Link to="/dashboard">
+                  <Button size="lg" className="rounded-full">
+                    Explore Dashboard
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="py-20 md:py-28">
+      <section className="py-20">
         <div className="container">
           <motion.div
-            className="mx-auto max-w-4xl overflow-hidden rounded-3xl bg-gradient-primary p-8 text-center md:p-16"
+            className="mx-auto max-w-4xl overflow-hidden rounded-3xl bg-gradient-to-r from-primary to-secondary p-10 text-center md:p-16"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
           >
-            <Shield className="mx-auto mb-6 h-16 w-16 text-primary-foreground/80" />
-            <h2 className="font-display text-3xl font-bold text-primary-foreground md:text-4xl">
+            <Shield className="mx-auto mb-6 h-16 w-16 text-white/80" />
+            <h2 className="font-display text-3xl font-bold text-white md:text-4xl">
               Take Control of Your Health Data
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-lg text-primary-foreground/80">
-              Join thousands who are already organizing their health records with
-              Healix. Start your lifelong digital health profile today.
+            <p className="mx-auto mt-4 max-w-xl text-lg text-white/80">
+              Start your lifelong digital health profile today. 
+              Secure, private, and always accessible.
             </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <div className="mt-8">
               <Link to="/dashboard">
                 <Button
-                  variant="glass"
-                  size="xl"
-                  className="bg-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground/20"
+                  size="lg"
+                  className="rounded-full bg-white px-10 text-primary hover:bg-white/90"
                 >
-                  Explore Demo
-                  <ArrowRight className="h-5 w-5" />
+                  Get Started Free
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
             </div>
@@ -315,37 +307,116 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-border bg-muted/30 py-12">
-        <div className="container">
-          <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
-            <div className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-primary">
-                <span className="text-sm font-bold text-primary-foreground">H</span>
+      {/* Modern Footer */}
+      <footer id="contact" className="bg-foreground text-background">
+        <div className="container py-16">
+          <div className="grid gap-12 md:grid-cols-4">
+            {/* Brand */}
+            <div className="md:col-span-1">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary">
+                  <span className="text-lg font-bold text-primary-foreground">H</span>
+                </div>
+                <span className="font-display text-xl font-bold">Healix</span>
               </div>
-              <span className="font-display text-lg font-bold text-foreground">
-                Healix
-              </span>
+              <p className="text-sm text-background/70 leading-relaxed">
+                Your lifelong digital health profile. Understand, track, and organize 
+                your medical history in one secure place.
+              </p>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground">
-              <Link to="#" className="hover:text-foreground">
-                Privacy Policy
-              </Link>
-              <Link to="#" className="hover:text-foreground">
-                Terms of Service
-              </Link>
-              <Link to="#" className="hover:text-foreground">
+            {/* Quick Links */}
+            <div>
+              <h4 className="mb-6 font-display text-sm font-semibold uppercase tracking-wider">
+                Quick Links
+              </h4>
+              <ul className="space-y-3 text-sm text-background/70">
+                <li><Link to="/dashboard" className="hover:text-background transition-colors">Dashboard</Link></li>
+                <li><Link to="/reports" className="hover:text-background transition-colors">Reports</Link></li>
+                <li><Link to="/trends" className="hover:text-background transition-colors">Trends</Link></li>
+                <li><Link to="/upload" className="hover:text-background transition-colors">Upload</Link></li>
+              </ul>
+            </div>
+
+            {/* Support */}
+            <div>
+              <h4 className="mb-6 font-display text-sm font-semibold uppercase tracking-wider">
+                Support
+              </h4>
+              <ul className="space-y-3 text-sm text-background/70">
+                <li><Link to="#" className="hover:text-background transition-colors">Help Center</Link></li>
+                <li><Link to="#" className="hover:text-background transition-colors">Privacy Policy</Link></li>
+                <li><Link to="#" className="hover:text-background transition-colors">Terms of Service</Link></li>
+                <li><Link to="#" className="hover:text-background transition-colors">Contact Us</Link></li>
+              </ul>
+            </div>
+
+            {/* Contact Info */}
+            <div>
+              <h4 className="mb-6 font-display text-sm font-semibold uppercase tracking-wider">
                 Contact
-              </Link>
-            </div>
-
-            <div className="text-sm text-muted-foreground">
-              © 2025 Healix. All rights reserved.
+              </h4>
+              <ul className="space-y-4 text-sm text-background/70">
+                <li className="flex items-center gap-3">
+                  <Phone className="h-4 w-4 text-primary" />
+                  <span>+1 (555) 123-4567</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Mail className="h-4 w-4 text-primary" />
+                  <span>support@healix.com</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <MapPin className="h-4 w-4 text-primary mt-0.5" />
+                  <span>123 Health Street, Medical City, MC 12345</span>
+                </li>
+              </ul>
             </div>
           </div>
 
-          <div className="mt-8 rounded-xl bg-warning/10 px-4 py-3 text-center text-sm text-warning-foreground">
+          {/* Bottom Bar */}
+          <div className="mt-12 flex flex-col items-center justify-between gap-6 border-t border-background/10 pt-8 md:flex-row">
+            <p className="text-sm text-background/60">
+              © 2025 Healix. All rights reserved.
+            </p>
+            
+            <div className="flex items-center gap-4">
+              <motion.a
+                href="#"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-background/10 text-background/70 hover:bg-primary hover:text-primary-foreground transition-colors"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Facebook className="h-4 w-4" />
+              </motion.a>
+              <motion.a
+                href="#"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-background/10 text-background/70 hover:bg-primary hover:text-primary-foreground transition-colors"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Twitter className="h-4 w-4" />
+              </motion.a>
+              <motion.a
+                href="#"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-background/10 text-background/70 hover:bg-primary hover:text-primary-foreground transition-colors"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Linkedin className="h-4 w-4" />
+              </motion.a>
+              <motion.a
+                href="#"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-background/10 text-background/70 hover:bg-primary hover:text-primary-foreground transition-colors"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Instagram className="h-4 w-4" />
+              </motion.a>
+            </div>
+          </div>
+
+          {/* Disclaimer */}
+          <div className="mt-8 rounded-xl bg-background/5 px-6 py-4 text-center text-sm text-background/60">
             <strong>Disclaimer:</strong> Healix provides informational insights and
             does not replace professional medical advice. Always consult your
             healthcare provider.
