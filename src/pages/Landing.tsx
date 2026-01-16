@@ -193,7 +193,7 @@ const Landing = () => {
               <img
                 src={heroIllustration}
                 alt="Healthcare Illustration"
-                className="w-full max-w-lg ml-auto"
+                className="w-full max-w-2xl h-150 ml-auto"
               />
             </motion.div>
           </div>
