@@ -13,6 +13,7 @@ import Trends from "./pages/Trends";
 import Medications from "./pages/Medications";
 import Upload from "./pages/Upload";
 import Profile from "./pages/Profile";
+import CareCircle from "./pages/CareCircle";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/systems" element={<BodySystems />} />
           <Route path="/reports" element={<Reports />} />
+          <Route path="/care-circle" element={<CareCircle />} />
           <Route path="/trends" element={<Trends />} />
           <Route path="/medications" element={<Medications />} />
           <Route path="/upload" element={<Upload />} />

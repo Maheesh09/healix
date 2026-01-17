@@ -11,9 +11,7 @@ import {
   Minus,
   ChevronRight,
   Pill,
-  Users,
 } from "lucide-react";
-import CareCircle from "@/components/CareCircle";
 import { Link } from "react-router-dom";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { Button } from "@/components/ui/button";
@@ -399,11 +397,6 @@ const Dashboard = () => {
                 </motion.div>
               ))}
             </div>
-          </motion.div>
-
-          {/* Care Circle Section */}
-          <motion.div variants={fadeIn}>
-            <CareCircle />
           </motion.div>
 
           {/* Quick Actions */}

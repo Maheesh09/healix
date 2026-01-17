@@ -10,6 +10,7 @@ import {
   Settings,
   Lightbulb,
   Activity,
+  Users,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -17,6 +18,7 @@ const sidebarLinks = [
   { name: "Overview", href: "/dashboard", icon: LayoutDashboard },
   { name: "Body Systems", href: "/systems", icon: Activity },
   { name: "Reports", href: "/reports", icon: FileText },
+  { name: "Care Circle", href: "/care-circle", icon: Users },
   { name: "Insights", href: "/insights", icon: Lightbulb },
   { name: "Trends", href: "/trends", icon: TrendingUp },
   { name: "Medications", href: "/medications", icon: Pill },
