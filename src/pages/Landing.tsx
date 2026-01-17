@@ -14,6 +14,9 @@ import {
   Twitter,
   Linkedin,
   Instagram,
+  Folder,
+  AlertTriangle,
+  Sparkles,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroIllustration from "@/assets/hero-illustration.png";
@@ -216,9 +219,203 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section id="features" className="py-20">
+      {/* Problem vs Solution Section */}
+      <section className="py-20 overflow-hidden">
         <div className="container">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="font-display text-3xl font-bold text-foreground md:text-4xl">
+              Say Goodbye to <span className="text-destructive">Report Chaos</span>
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+              Transform the way you manage your health records
+            </p>
+          </motion.div>
+
+          <div className="grid gap-8 lg:grid-cols-2 items-center">
+            {/* Messy Reports - Before */}
+            <motion.div
+              className="relative"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="relative rounded-3xl bg-gradient-to-br from-destructive/10 to-warning/10 p-8 border-2 border-dashed border-destructive/30">
+                <div className="absolute -top-4 left-6 bg-destructive text-destructive-foreground px-4 py-1 rounded-full text-sm font-medium">
+                  Without Healix
+                </div>
+                
+                {/* Scattered Papers Animation */}
+                <div className="relative h-64 overflow-hidden">
+                  {[...Array(6)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute bg-card shadow-lg rounded-lg p-3 border border-border"
+                      style={{
+                        width: '120px',
+                        left: `${10 + (i % 3) * 30}%`,
+                        top: `${10 + Math.floor(i / 3) * 45}%`,
+                        rotate: `${(i - 3) * 8}deg`,
+                      }}
+                      animate={{
+                        y: [0, -5, 0],
+                        rotate: [`${(i - 3) * 8}deg`, `${(i - 3) * 10}deg`, `${(i - 3) * 8}deg`],
+                      }}
+                      transition={{
+                        duration: 3,
+                        delay: i * 0.2,
+                        repeat: Infinity,
+                      }}
+                    >
+                      <div className="flex items-center gap-2 mb-2">
+                        <Folder className="h-4 w-4 text-muted-foreground" />
+                        <span className="text-xs text-muted-foreground truncate">Report_{i + 1}.pdf</span>
+                      </div>
+                      <div className="space-y-1">
+                        <div className="h-1.5 bg-muted rounded w-full" />
+                        <div className="h-1.5 bg-muted rounded w-3/4" />
+                      </div>
+                    </motion.div>
+                  ))}
+                  
+                  {/* Confusion Icon */}
+                  <motion.div
+                    className="absolute bottom-4 right-4 flex h-16 w-16 items-center justify-center rounded-full bg-destructive/20"
+                    animate={{ scale: [1, 1.1, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    <AlertTriangle className="h-8 w-8 text-destructive" />
+                  </motion.div>
+                </div>
+
+                <div className="mt-4 space-y-2">
+                  <p className="text-sm text-muted-foreground flex items-center gap-2">
+                    <span className="text-destructive">✗</span> Scattered across devices
+                  </p>
+                  <p className="text-sm text-muted-foreground flex items-center gap-2">
+                    <span className="text-destructive">✗</span> Hard to find when needed
+                  </p>
+                  <p className="text-sm text-muted-foreground flex items-center gap-2">
+                    <span className="text-destructive">✗</span> No insights or trends
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Organized Healix - After */}
+            <motion.div
+              className="relative"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="relative rounded-3xl bg-gradient-to-br from-primary/10 to-accent/10 p-8 border-2 border-primary/30">
+                <div className="absolute -top-4 left-6 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium flex items-center gap-2">
+                  <Sparkles className="h-3 w-3" />
+                  With Healix
+                </div>
+                
+                {/* Organized Dashboard Preview */}
+                <div className="relative h-64 bg-card rounded-2xl shadow-lg overflow-hidden border border-border">
+                  <div className="p-4">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center gap-2">
+                        <div className="h-8 w-8 rounded-lg bg-gradient-primary flex items-center justify-center">
+                          <Heart className="h-4 w-4 text-primary-foreground" />
+                        </div>
+                        <span className="font-medium text-foreground text-sm">Your Health Profile</span>
+                      </div>
+                      <motion.div
+                        className="px-2 py-1 bg-accent/20 rounded-full text-xs text-accent font-medium"
+                        animate={{ opacity: [1, 0.5, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      >
+                        All Synced
+                      </motion.div>
+                    </div>
+                    
+                    {/* Mini Cards */}
+                    <div className="grid grid-cols-3 gap-2 mb-4">
+                      {['Blood', 'Heart', 'Kidney'].map((label, i) => (
+                        <motion.div
+                          key={label}
+                          className="p-2 rounded-lg bg-muted/50"
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: 0.3 + i * 0.1 }}
+                        >
+                          <div className="text-xs text-muted-foreground">{label}</div>
+                          <div className="text-sm font-semibold text-foreground">Normal</div>
+                        </motion.div>
+                      ))}
+                    </div>
+                    
+                    {/* Mini Chart */}
+                    <div className="h-16 flex items-end gap-1">
+                      {[40, 65, 55, 80, 70, 90, 75].map((height, i) => (
+                        <motion.div
+                          key={i}
+                          className="flex-1 bg-primary/30 rounded-t"
+                          initial={{ height: 0 }}
+                          whileInView={{ height: `${height}%` }}
+                          transition={{ delay: 0.5 + i * 0.05, duration: 0.5 }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-4 space-y-2">
+                  <p className="text-sm text-muted-foreground flex items-center gap-2">
+                    <span className="text-accent">✓</span> All reports in one place
+                  </p>
+                  <p className="text-sm text-muted-foreground flex items-center gap-2">
+                    <span className="text-accent">✓</span> Organized by body system
+                  </p>
+                  <p className="text-sm text-muted-foreground flex items-center gap-2">
+                    <span className="text-accent">✓</span> AI-powered health insights
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Transformation Arrow */}
+          <motion.div
+            className="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 items-center"
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+          >
+            <div className="bg-gradient-primary rounded-full p-3 shadow-glow">
+              <ArrowRight className="h-6 w-6 text-primary-foreground" />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section id="features" className="py-20 bg-muted/30">
+        <div className="container">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="font-display text-3xl font-bold text-foreground md:text-4xl">
+              Everything You Need
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Powerful features to manage your health journey
+            </p>
+          </motion.div>
+          
           <div className="grid gap-8 md:grid-cols-3">
             {features.map((feature, index) => (
               <motion.div
